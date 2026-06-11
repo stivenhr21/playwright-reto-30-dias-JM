@@ -19,7 +19,9 @@ test.describe("Login OrangeHRM", () => {
 
   test("Unsuccessful login with invalid credentials", async ({ page }) => {
     await page.getByRole("textbox", { name: "Username" }).fill("AdminInvalid");
-    await page.getByRole("textbox", { name: "Password" }).fill("AdminInvalid123");
+    await page
+      .getByRole("textbox", { name: "Password" })
+      .fill("AdminInvalid123");
     await page.getByRole("button", { name: "Login" }).click();
     await expect(page.getByRole("alert")).toContainText("Invalid credentials");
   });
